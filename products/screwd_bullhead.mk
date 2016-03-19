@@ -24,10 +24,11 @@ $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
 
 # Override AOSP build properties
 PRODUCT_NAME := screwd_bullhead
-PRODUCT_BRAND := google
 PRODUCT_DEVICE := bullhead
+PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 5X
 PRODUCT_MANUFACTURER := LGE
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 endif
 
@@ -49,3 +50,6 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 #export ENABLE_GCCONLY := true
 #export GRAPHITE_OPTS := true
 #export CLANG_O3 := true
+export ENABLE_SANITIZE := true
+export USE_PIPE := true
+
