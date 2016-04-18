@@ -39,6 +39,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 
 # Inline kernel building
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-$(TARGET_GCC_VERSION_KERNEL)/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-
 TARGET_KERNEL_SOURCE := kernel/huawei/angler
 TARGET_KERNEL_CONFIG := saber_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
