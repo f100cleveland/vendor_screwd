@@ -59,5 +59,9 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat
+
+# init file
+PRODUCT_COPY_FILES += \
+    vendor/screwd/prebuilt/common/etc/init.screwd.rc:root/init.screwd.rc
     
 
