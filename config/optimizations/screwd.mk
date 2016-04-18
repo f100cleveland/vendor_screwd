@@ -108,7 +108,11 @@ ifeq (true,$(ENABLE_EXTRAGCC))
    OPT9 := (extras)
 endif
 
-  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)
+ifeq (true,$(ENABLE_SANITIZE))
+   OPT10 := (mem-sanitize)
+endif
+
+  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)
 
   ifneq ($(GCC_OPTIMIZATION_LEVELS),)
     PRODUCT_PROPERTY_OVERRIDES += \
