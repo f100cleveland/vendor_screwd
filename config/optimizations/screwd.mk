@@ -72,9 +72,8 @@
  export LD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LD_LIBRARY_PATH)
  export LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LIBRARY_PATH)
 
-ifeq ($(USE_O3_OPTIMIZATIONS),true)
+# Used by DTC
    OPT1 := (O3)
-endif
 
 ifeq ($(GRAPHITE_OPTS),true)
    OPT2 := (graphite)
