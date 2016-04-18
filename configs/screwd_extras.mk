@@ -63,5 +63,3 @@ PRODUCT_PACKAGES += \
 # init file
 PRODUCT_COPY_FILES += \
     vendor/screwd/prebuilt/common/etc/init.screwd.rc:root/init.screwd.rc
-    
-
