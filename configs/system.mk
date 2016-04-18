@@ -18,7 +18,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/common
 PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/$(TARGET_PRODUCT)
 
 # Optimizations
-include vendor/screwd/config/screwd.mk
+include vendor/screwd/configs/screwd.mk
 
 # Copy custom ramdisk
 PRODUCT_COPY_FILES += \
