@@ -46,6 +46,10 @@ TARGET_KERNEL_CONFIG := saber_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 #Optimize-it!!
+# System
+export USE_CCACHE := 1
+export USE_SYSTEM_CCACHE := 1
+
 # Build
 export ANDROID_COMPILE_WITH_JACK := false
 export DISABLE_OPTIMIZATIONS := false
