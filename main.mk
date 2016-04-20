@@ -18,6 +18,7 @@
 include vendor/screwd/vendor.mk
 include vendor/screwd/configs/aosp_fixes.mk
 include vendor/screwd/configs/system.mk
+include vendor/screwd/configs/screwd_opts.mk
 include vendor/screwd/configs/screwd_extras.mk
 include vendor/screwd/configs/screwd_overrides.mk
 include vendor/screwd/configs/bootanimation.mk
