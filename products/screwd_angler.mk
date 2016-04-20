@@ -18,7 +18,7 @@ ifeq (screwd_angler,$(TARGET_PRODUCT))
 
 # Include Screw'd common configuration
 include vendor/screwd/main.mk
-include vendor/screwd/screwd_opts.mk
+include vendor/screwd/configs/screwd_opts.mk
 
 # Inherit AOSP device configuration for angler
 $(call inherit-product, device/huawei/angler/aosp_angler.mk)
@@ -40,9 +40,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-$(TARGET_GCC_VERSION_KERNEL)/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-
 TARGET_KERNEL_SOURCE := kernel/huawei/angler
-TARGET_KERNEL_CONFIG := saber_defconfig
+TARGET_KERNEL_CONFIG := benzo_defconfig
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="David Smit (dsmitty166) & Dustin Rinne (f100cleveland)"
 
 include vendor/screwd/configs/screwd.mk
+endif
