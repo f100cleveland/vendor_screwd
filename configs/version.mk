@@ -6,7 +6,7 @@ ifdef SCREWD_BUILD_EXTRA
     SCREWD_POSTFIX := -$(SCREWD_BUILD_EXTRA)
 endif
 ifndef SCREWD_BUILD_TYPE
-    SCREWD_BUILD_TYPE := Slim-Nav
+    SCREWD_BUILD_TYPE := SaberMod-Slim-Nav
     SCREWD_POSTFIX := $(shell date +"%Y%m%d-%H%M")
 endif
 
