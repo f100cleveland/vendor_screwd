@@ -18,6 +18,7 @@ ifeq (screwd_shamu,$(TARGET_PRODUCT))
 
 # Include Screw'd common configuration
 include vendor/screwd/main.mk
+include vendor/screwd/configs/screwd_opts.mk
 
 # Inherit AOSP device configuration
 $(call inherit-product, device/moto/shamu/aosp_shamu.mk)
@@ -34,24 +35,15 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=google/shamu/shamu:6.0.1/MMB29X/2704508:user/release-keys \
     PRIVATE_BUILD_DESC="shamu-user 6.0.1 MMB29X 2704508 release-keys"
 
-endif
-
 # Kernel inline build
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-$(TARGET_GCC_VERSION_KERNEL)/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
 TARGET_KERNEL_CONFIG := hells_defconfig
-TARGET_GCC_VERSION_ARM := 5.3
 
-#Optimize-it!!
-export STRICT_ALIASING := true
-
-#Optimize-it!!
-export STRICT_ALIASING := true
-export ENABLE_GCCONLY := true
-export KRAIT_TUNINGS := true
-export GRAPHITE_OPTS := true
-export CLANG_O3 := true
-export ENABLE_SANITIZE := true
-export USE_PIPE := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Brandon Shawhan (brandonabandon)"
+
+include vendor/screwd/configs/screwd.mk
+endif

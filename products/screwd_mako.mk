@@ -19,6 +19,7 @@ ifeq (screwd_mako,$(TARGET_PRODUCT))
 
 # Include Screw'd common configuration
 include vendor/screwd/main.mk
+include vendor/screwd/configs/screwd_opts.mk
 
 # Inherit AOSP device configuration
 $(call inherit-product, device/lge/mako/full_mako.mk)
@@ -28,12 +29,12 @@ PRODUCT_NAME := screwd_mako
 PRODUCT_BRAND := Google
 PRODUCT_MODEL := Nexus 4
 PRODUCT_MANUFACTURER := LGE
-endif
 
 # Kernel inline build
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-$(TARGET_GCC_VERSION_KERNEL)/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 TARGET_KERNEL_SOURCE := kernel/lge/mako
 TARGET_KERNEL_CONFIG := hells_defconfig
-TARGET_GCC_VERSION_ARM := 5.3
 
 # Device Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
@@ -41,12 +42,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=google/occam/mako:6.0.1/MMB29X/2704508:user/release-keys \
     PRIVATE_BUILD_DESC="occam-user 6.0.1 MMB29X 2704508 release-keys"
 
-#Optimize-it!!
-export STRICT_ALIASING := true
-export KRAIT_TUNINGS := true
-export ENABLE_GCCONLY := true
-export GRAPHITE_OPTS := true
-export CLANG_O3 := true
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Brandon Shawhan (brandonabandon)"
+
+include vendor/screwd/configs/screwd.mk
+endif

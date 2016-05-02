@@ -31,8 +31,15 @@ endif
   TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/lib
   export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/lib
 
+  TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/lib
+  export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/lib
+
   # Path to toolchain
   SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
+  SM_AND := $(shell cat $(SM_AND_PATH)/VERSION)
+
+  # Path to arm toolchain
+  SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)
   SM_AND := $(shell cat $(SM_AND_PATH)/VERSION)
 
   # Find strings in version info
@@ -48,6 +55,10 @@ endif
   # Path to kernel toolchain
   SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-$(TARGET_SM_KERNEL)
   SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/aarch64-gcc --version)
+
+  # Path to arm kernel toolchain
+  SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_SM_KERNEL)
+  SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/arm-eabi-gcc --version)
 
   SM_KERNEL_NAME := $(filter %sabermod,$(SM_KERNEL))
   SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151% 20160% 20161%,$(SM_KERNEL))
