@@ -18,6 +18,7 @@ ifeq (screwd_bullhead,$(TARGET_PRODUCT))
 
 # Include Screw'd common configuration
 include vendor/screwd/main.mk
+include vendor/screwd/configs/screwd_opts.mk
 
 # Inherit AOSP device configuration for bullhead
 $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
@@ -30,8 +31,6 @@ PRODUCT_MODEL := Nexus 5X
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-endif
-
 # Device Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=bullhead \
@@ -40,18 +39,14 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 
 # Inline kernel building
-TARGET_GCC_VERSION_ARM64 := 4.9
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-$(TARGET_GCC_VERSION_KERNEL)/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-
 TARGET_KERNEL_SOURCE := kernel/lge/bullhead
 TARGET_KERNEL_CONFIG := bullhead_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
-#Optimize-it!!
-export STRICT_ALIASING := true
-export ENABLE_GCCONLY := true
-export GRAPHITE_OPTS := true
-export CLANG_O3 := true
-export ENABLE_SANITIZE := true
-export USE_PIPE := true
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Omkar Shinde (Megatron007)"
+
+include vendor/screwd/configs/screwd.mk
+endif
