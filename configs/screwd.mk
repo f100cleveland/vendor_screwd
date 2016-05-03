@@ -23,18 +23,15 @@
  # Set GCC colors
  export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+ # Find host os
  UNAME := $(shell uname -s)
-ifeq (Linux,$(UNAME))
-  HOST_OS := linux
-endif
+
+ HOST_OS := linux
 
   TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/lib
   export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/lib
 
-  TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/lib
-  export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/lib
-
-  # Path to toolchain
+  # Path to aarch 64 toolchain
   SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
   SM_AND := $(shell cat $(SM_AND_PATH)/VERSION)
 
@@ -52,7 +49,7 @@ endif
    PRODUCT_PROPERTY_OVERRIDES += \
      ro.sm.android=$(SM_AND_VERSION)
 
-  # Path to kernel toolchain
+# Path to aarch64 kernel toolchain
   SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-$(TARGET_SM_KERNEL)
   SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/aarch64-gcc --version)
 
@@ -108,6 +105,7 @@ ifeq (true,$(ENABLE_SANITIZE))
 endif
 
   GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)
+
 
   ifneq ($(GCC_OPTIMIZATION_LEVELS),)
     PRODUCT_PROPERTY_OVERRIDES += \
